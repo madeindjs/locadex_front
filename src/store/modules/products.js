@@ -20,6 +20,12 @@ const actions = {
   search({commit}, term) {
     commit('SET_TERM', term)
   },
+  setProducts({commit}, products) {
+    commit('SET_PRODUCTS', products)
+  },
+  setProductShops({commit}, products) {
+    commit('SET_PRODUCTS', products)
+  },
 }
 
 // mutations
