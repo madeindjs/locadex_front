@@ -2,12 +2,14 @@
   <l-map :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
     <l-marker :lat-lng="marker"></l-marker>
+    <v-locatecontrol/>
   </l-map>
 </template>
 
 <script>
 import L from 'leaflet';
 import {LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 
 export default {
     name: 'ProductMap',
@@ -23,7 +25,8 @@ export default {
     components: {
         LMap,
         LTileLayer,
-        LMarker
+        LMarker,
+        'v-locatecontrol': Vue2LeafletLocatecontrol
     }
 }
 </script>
