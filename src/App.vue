@@ -5,21 +5,24 @@
         <ProductList />
       </div>
       <div class="col-6">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <ProductMap/>
+        <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 import ProductList from './components/ProductList.vue'
+import ProductMap from './components/ProductMap.vue'
 
 export default {
   name: 'app',
   components: {
+    ProductMap,
     ProductList,
-    HelloWorld
+    // HelloWorld,
   }
 }
 </script>

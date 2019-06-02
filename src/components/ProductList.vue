@@ -22,6 +22,12 @@ export default {
       products: [
         { id: 1, name: 'Nike AirMax' },
         { id: 2, name: 'Nike AirMax' },
+        { id: 3, name: 'Nike AirMax' },
+        { id: 4, name: 'Nike AirMax' },
+        { id: 5, name: 'Nike AirMax' },
+        { id: 6, name: 'Nike AirMax' },
+        { id: 7, name: 'Nike AirMax' },
+        { id: 8, name: 'Nike AirMax' },
       ],
       selectedProductId: null,
     }
