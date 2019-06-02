@@ -2,12 +2,11 @@
   <div id="app" class="">
     <Navigation />
     <div class="container-fluid row" id="container">
-      <div class="col-4">
+      <div class="col-12 col-sm-6 col-md-4">
         <ProductList />
       </div>
-      <div class="col-8 pr-0">
+      <div class="col-12 col-sm-6 col-md-8 px-0">
         <ProductMap/>
-        <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
       </div>
     </div>
   </div>
