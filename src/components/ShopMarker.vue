@@ -17,10 +17,12 @@ export default {
   methods: {
     shopContent: function() {
       return `
-        <strong>${this.shop.attributes.name}</strong><br/>
-        ${this.shop.attributes.address},
-        ${this.shop.attributes.zip_code},
-        ${this.shop.attributes.town}
+        <address>
+          <strong>${this.shop.attributes.name}</strong><br/>
+          ${this.shop.attributes.address},
+          ${this.shop.attributes.zip_code},
+          ${this.shop.attributes.town}
+        </address>
       `
     }
   }
