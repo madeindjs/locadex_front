@@ -38,12 +38,10 @@ export default {
   },
   methods:{
     loadProducts: function() {
-      axios.get(`${api_url}/products`)
+      axios.get(`${api_url}/product_shops`)
         .then(response => {
           // this.acts = response.data.data
-          this.$store.dispatch('products/setProductShops', response.data.data)
-          //
-
+          this.$store.dispatch('products/setProductShops', response.data)
           this.loading = false
         })
         .catch(error => {

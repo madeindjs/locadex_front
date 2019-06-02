@@ -1,18 +1,26 @@
 <template lang="html">
   <l-map :zoom="zoom" :center="center">
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-    <l-marker :lat-lng="marker"></l-marker>
+    <!-- <l-marker :lat-lng="marker"></l-marker> -->
+    <l-marker :lat-lng="[shop.attributes.latitude, shop.attributes.longitude]" v-for="shop in shops"></l-marker>
     <v-locatecontrol/>
   </l-map>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import L from 'leaflet';
-import {LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 
 export default {
     name: 'ProductMap',
+    components: {
+      LMap,
+      LTileLayer,
+      LMarker,
+      Vue2LeafletLocatecontrol
+    },
     data() {
        return {
          zoom:13,
@@ -22,12 +30,11 @@ export default {
          marker: L.latLng(47.413220, -1.219482),
        }
      },
-    components: {
-        LMap,
-        LTileLayer,
-        LMarker,
-        'v-locatecontrol': Vue2LeafletLocatecontrol
-    }
+     computed: {
+       ...mapState('products', {
+         shops: state => state.shops,
+       }),
+     },
 }
 </script>
 
