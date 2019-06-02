@@ -18,6 +18,7 @@ import ProductList from './components/ProductList.vue'
 import ProductMap from './components/ProductMap.vue'
 import Navigation from './components/Navigation.vue'
 
+
 export default {
   name: 'app',
   components: {
