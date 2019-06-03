@@ -6,7 +6,7 @@
       <h6 class="card-subtitle mb-2 text-muted">{{ product.attributes.ean }}</h6>
       <div class="card-text">
         <ul class="list-unstyled">
-          <li v-for="(value, property) in product.attributes.properties">
+          <li v-for="(value, property) in product.attributes.properties" :key="property">
             <strong>{{ property }}</strong> {{ value }}
           </li>
         </ul>

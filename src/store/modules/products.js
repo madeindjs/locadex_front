@@ -3,6 +3,7 @@
 const state = {
   term: null,
   products: [],
+  productShops: [],
   shops: [],
 }
 
@@ -14,6 +15,9 @@ const getters = {
   term: state => {
     return state.term
   },
+  productShops: (state) => {
+    return state.productShops
+  }
 }
 
 // actions
@@ -28,6 +32,7 @@ const actions = {
     let products = responseData.included.filter(item => item.type == "product")
     let shops = responseData.included.filter(item => item.type == "shop")
     commit('SET_PRODUCTS', products)
+    commit('SET_PRODUCT_SHOPS', responseData.data)
     commit('SET_SHOPS', shops)
   },
 }
@@ -40,6 +45,9 @@ const mutations = {
   },
   SET_PRODUCTS (state, products) {
     state.products = products
+  },
+  SET_PRODUCT_SHOPS (state, productShops) {
+    state.productShops = productShops
   },
   SET_SHOPS (state, shops) {
     state.shops = shops
