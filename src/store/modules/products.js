@@ -1,4 +1,7 @@
 
+const axios = require('axios')
+const api_url = require('../../config').api_url
+
 // initial state
 const state = {
   term: null,
@@ -24,16 +27,20 @@ const getters = {
 const actions = {
   search({commit}, term) {
     commit('SET_TERM', term)
-  },
-  setProducts({commit}, products) {
-    commit('SET_PRODUCTS', products)
-  },
-  setProductShops({commit}, responseData) {
-    let products = responseData.included.filter(item => item.type == "product")
-    let shops = responseData.included.filter(item => item.type == "shop")
-    commit('SET_PRODUCTS', products)
-    commit('SET_PRODUCT_SHOPS', responseData.data)
-    commit('SET_SHOPS', shops)
+
+    axios.get(`${api_url}/product_shops`, {params: {q: term}})
+        .then(response => {
+          // this.acts = response.data.data
+          const responseData = response.data
+          let products = responseData.included.filter(item => item.type == "product")
+          let shops = responseData.included.filter(item => item.type == "shop")
+          commit('SET_PRODUCTS', products)
+          commit('SET_PRODUCT_SHOPS', responseData.data)
+          commit('SET_SHOPS', shops)
+        })
+        .catch(error => {
+          alert(error)
+        })
   },
 }
 

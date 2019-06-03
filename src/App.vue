@@ -17,12 +17,6 @@ import ProductList from './components/ProductList.vue'
 import ProductMap from './components/ProductMap.vue'
 import Navigation from './components/Navigation.vue'
 
-
-
-const axios = require('axios')
-const api_url = require('./config').api_url
-
-
 export default {
   name: 'app',
   components: {
@@ -38,15 +32,7 @@ export default {
   },
   methods:{
     loadProducts: function() {
-      axios.get(`${api_url}/product_shops`)
-        .then(response => {
-          // this.acts = response.data.data
-          this.$store.dispatch('products/setProductShops', response.data)
-          this.loading = false
-        })
-        .catch(error => {
-          alert(error)
-        })
+      this.$store.dispatch('products/search', null)
     }
   },
   beforeMount(){
