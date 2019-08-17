@@ -31,9 +31,7 @@ export default {
       this.$store.dispatch('products/search', null)
     }
   },
-  beforeMount(){
-    this.loadProducts()
-  },
+  
 }
 </script>
 

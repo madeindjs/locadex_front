@@ -28,6 +28,13 @@ const actions = {
   search({commit}, term) {
     commit('SET_TERM', term)
 
+    if (!term) {
+      commit('SET_PRODUCTS', [])
+      commit('SET_PRODUCT_SHOPS', [])
+      commit('SET_SHOPS', [])
+      return;
+    }
+
     axios.get(`${api_url}/product_shops`, {params: {q: term}})
         .then(response => {
           // this.acts = response.data.data

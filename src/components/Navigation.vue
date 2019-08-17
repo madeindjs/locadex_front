@@ -22,6 +22,7 @@ export default {
     }
   },
   methods: {
+    
     search: function () {
       this.$store.dispatch('products/search', this.term)
     }
