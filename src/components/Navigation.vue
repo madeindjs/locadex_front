@@ -15,7 +15,7 @@
         <a class="nav-link" href="https://myshop.locadex.ch/">My Shop</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="#">About us</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0"@submit.prevent="search">
