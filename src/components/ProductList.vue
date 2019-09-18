@@ -6,7 +6,7 @@
         <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
         <div class="card-text">
           <ul class="list-unstyled">
-            <li v-for="(value, property) in product.attributes.properties" :key="property">
+            <li v-for="(value, property) in getProductProperties(product)" :key="property">
               <strong>{{ property }}</strong> {{ value }}
             </li>
           </ul>
@@ -42,6 +42,11 @@ export default {
   methods: {
     searchEAN(ean) {
       this.$store.dispatch('products/search', ean)
+    },
+    getProductProperties(product) {
+      delete product.attributes.properties['url'];
+
+      return product.attributes.properties;
     }
   }
 }
