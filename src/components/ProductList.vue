@@ -3,10 +3,7 @@
   <div v-if="isLoading == false">
     <div class="card border-light" :key="product.id" v-for="product in products">
       <div class="card-body">
-        <h5 class="card-title">{{ product.attributes.name }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <a href="#" class="btn btn-light" @click="searchEAN(product.attributes.ean)">{{ product.attributes.ean }}</a>
-        </h6>
+        <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
         <div class="card-text">
           <ul class="list-unstyled">
             <li v-for="(value, property) in product.attributes.properties" :key="property">
