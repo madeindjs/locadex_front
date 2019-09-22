@@ -2,6 +2,7 @@
 <div>
   <div v-if="isLoading == false">
     <div class="card border-light" :key="product.id" v-for="product in products">
+      <img v-if="product.attributes.properties.image" :src="product.attributes.properties.image" class="card-img-top" alt="...">  
       <div class="card-body">
         <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
         <div class="card-text">
@@ -45,6 +46,7 @@ export default {
     },
     getProductProperties(product) {
       delete product.attributes.properties['url'];
+      delete product.attributes.properties['image'];
 
       return product.attributes.properties;
     }
