@@ -2,7 +2,13 @@
 <div>
   <div v-if="isLoading == false">
     <div class="card border-light" :key="product.id" v-for="product in products">
-      <img v-if="product.attributes.properties.image" :src="product.attributes.properties.image" class="card-img-top" alt="...">  
+      <img
+        v-if="product.attributes.properties.image"
+        v-lazy="product.attributes.properties.image"
+        src="https://image.flaticon.com/icons/svg/265/265693.svg"
+        class="card-img-top"
+        alt="..."
+      />
       <div class="card-body">
         <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
         <div class="card-text">
