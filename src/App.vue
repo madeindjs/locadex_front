@@ -31,7 +31,15 @@ export default {
       this.$store.dispatch('products/search', null)
     }
   },
-  
+  mounted() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+
+    if (q) {
+      this.lo
+    }
+  }
+
 }
 </script>
 

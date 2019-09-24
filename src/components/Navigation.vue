@@ -35,9 +35,17 @@ export default {
     }
   },
   methods: {
-
     search: function () {
       this.$store.dispatch('products/search', this.term)
+    }
+  },
+  mounted() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+
+    if (q) {
+      this.term = q;
+      this.search();
     }
   }
 }
