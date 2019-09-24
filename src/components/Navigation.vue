@@ -40,8 +40,8 @@ export default {
     }
   },
   mounted() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const q = urlParams.get('q');
+    const searchParams = new URLSearchParams(window.location.search);
+    const q = searchParams.get('q');
 
     if (q) {
       this.term = q;

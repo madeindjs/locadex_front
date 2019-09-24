@@ -29,6 +29,10 @@ const actions = {
   search({commit}, term) {
     commit('SET_TERM', term)
 
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("q", term);
+    window.history.pushState({}, this.term, searchParams.toString());
+
     if (!term) {
       commit('SET_PRODUCTS', [])
       commit('SET_PRODUCT_SHOPS', [])
