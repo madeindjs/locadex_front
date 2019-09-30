@@ -34,10 +34,10 @@
 
           <ul class="list-unstyled">
             <li>
-              <a href="#!">My store</a>
+              <a href="https://myshop.locadex.ch/">My store</a>
             </li>
             <li>
-              <a href="#!">Product locator</a>
+              <a href="https://products.locadex.ch/">Product locator</a>
             </li>
             <li>
               <a href="#!">Help</a>
