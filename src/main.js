@@ -6,6 +6,14 @@ import { Icon }  from 'leaflet'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'leaflet/dist/leaflet.css'
+import LazyLoad from "vanilla-lazyload";
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'https://image.flaticon.com/icons/svg/265/265693.svg',
+  loading: 'https://image.flaticon.com/icons/svg/265/265693.svg',
+  attempt: 1
+})
 
 import store from './store'
 

@@ -8,6 +8,7 @@ const state = {
   products: [],
   productShops: [],
   shops: [],
+  isLoading: false,
 }
 
 // getters
@@ -28,6 +29,19 @@ const actions = {
   search({commit}, term) {
     commit('SET_TERM', term)
 
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("q", term);
+    window.history.pushState({}, this.term, searchParams.toString());
+
+    if (!term) {
+      commit('SET_PRODUCTS', [])
+      commit('SET_PRODUCT_SHOPS', [])
+      commit('SET_SHOPS', [])
+      return;
+    }
+
+    commit('SET_IS_LOADING', true)
+
     axios.get(`${api_url}/product_shops`, {params: {q: term}})
         .then(response => {
           // this.acts = response.data.data
@@ -38,14 +52,16 @@ const actions = {
           commit('SET_PRODUCT_SHOPS', responseData.data)
           commit('SET_SHOPS', shops)
         })
-        .catch(error => {
-          alert(error)
-        })
+        .catch(error => alert(error))
+        .finally(() => commit('SET_IS_LOADING', false))
   },
 }
 
 // mutations
 const mutations = {
+  SET_IS_LOADING (state, value) {
+    state.isLoading = value
+  },
   // TODO set mutliples mutators
   SET_TERM (state, term) {
     state.term = term
