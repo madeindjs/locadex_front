@@ -11,13 +11,19 @@
       />
       <div class="card-body">
         <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
-        <div class="card-text">
-          <ul class="list-unstyled">
-            <li v-for="(value, property) in getProductProperties(product)" :key="property">
-              <strong>{{ property }}</strong> {{ value }}
-            </li>
-          </ul>
-        </div>
+        <ul
+          class="list-group list-group-flush"
+          v-if="displayProductInformations == product.id">
+          <li
+            v-for="(value, property) in getProductProperties(product)" :key="property"
+            class="list-group-item"
+          ><strong>{{ property }}</strong> {{ value }}</li>
+        </ul>
+        <a
+          v-if="displayProductInformations != product.id"
+          class="card-link text-info"
+          @click="displayProductInformations = product.id"
+        >+ d'infos</a>
       </div>
     </div>
   </div>
@@ -43,6 +49,7 @@ export default {
   },
   data: () => {
     return {
+      displayProductInformations: null,
       selectedProductId: null,
     }
   },
