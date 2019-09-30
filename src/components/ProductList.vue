@@ -11,6 +11,7 @@
       />
       <div class="card-body">
         <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Available in {{ countShops(product.id) }} stores</h6>
         <ul
           class="list-group list-group-flush"
           v-if="displayProductInformations == product.id">
@@ -45,6 +46,7 @@ export default {
     ...mapState('products', {
       products: state => state.products,
       isLoading: state => state.isLoading,
+      productShops: state => state.productShops,
     }),
   },
   data: () => {
@@ -54,6 +56,11 @@ export default {
     }
   },
   methods: {
+    countShops(productId) {
+      return this.productShops
+                 .filter(p => p.attributes.product_id == productId)
+                 .length
+    },
     searchEAN(ean) {
       this.$store.dispatch('products/search', ean)
     },
