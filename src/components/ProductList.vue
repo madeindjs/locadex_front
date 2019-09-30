@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="pt-2">
   <div v-if="isLoading == false">
     <div class="card border-light" :key="product.id" v-for="product in products">
       <img
@@ -10,7 +10,17 @@
         alt="..."
       />
       <div class="card-body">
-        <h5 class="card-title"><a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a></h5>
+        <h5 class="card-title d-flex justify-content-between align-items-center">
+          <a href="#"  @click="searchEAN(product.attributes.ean)">{{ product.attributes.name }}</a>
+          <!-- <span class="badge badge-secondary">{{ countShops(product.id) }}</span> -->
+          <small>
+            <a
+              v-if="displayProductInformations != product.id"
+              class="card-link text-info"
+              @click="displayProductInformations = product.id"
+            >about</a>
+          </small>
+        </h5>
         <h6 class="card-subtitle mb-2 text-muted">Available in {{ countShops(product.id) }} stores</h6>
         <ul
           class="list-group list-group-flush"
@@ -20,11 +30,14 @@
             class="list-group-item"
           ><strong>{{ property }}</strong> {{ value }}</li>
         </ul>
-        <a
-          v-if="displayProductInformations != product.id"
-          class="card-link text-info"
-          @click="displayProductInformations = product.id"
-        >+ d'infos</a>
+        <!-- <p class="card-text text-right">
+          <a
+            v-if="displayProductInformations != product.id"
+            class="card-link text-info"
+            @click="displayProductInformations = product.id"
+          >+ d'infos</a>
+        </p> -->
+        <hr>
       </div>
     </div>
   </div>
